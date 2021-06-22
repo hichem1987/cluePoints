@@ -85,3 +85,6 @@ main {
   }
 }
 
+:host ::ng-deep .ui-inputtext {
+  font-size: 13px !important;
+}
