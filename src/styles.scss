@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import "src/styles/shared/variables";
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: $white;
+  &.dark-overlay{
+    position: relative;
+    &:after{
+      content: "";
+      display: block;
+      position: fixed; /* could also be absolute */
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 10;
+      background-color: rgba(0,0,0,0.2);
+    }
+  }
+}

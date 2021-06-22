@@ -1,0 +1,87 @@
+@import "../../styles/shared/loader";
+
+header {
+  height: 100px;
+
+  div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      unset: all;
+      margin: auto;
+      display: table;
+
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+        color: inherit;
+        unset: all;
+        margin: auto;
+        display: table;
+      }
+
+      img, &:hover img, &:focus img, &:active img {
+        transition: all 0.3s;
+        width: 288px;
+        margin: auto;
+        cursor: pointer;
+        background: white;
+        opacity: 1;
+      }
+
+      img:hover, &:hover img:hover, &:focus img:hover, &:active img:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+main {
+  .marge-bottom {
+    margin-bottom: 80px;
+  }
+
+  .iconwrapper {
+    position: relative;
+
+    .myIcon {
+      transition: all 0.3s;
+      position: absolute;
+      z-index: 500;
+      left: 7px;
+      top: 1px;
+      opacity: 1;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .autocompleteClass {
+  background-color: $white;
+}
+
+:host ::ng-deep .ui-autocomplete-input {
+  padding-left: 30px;
+  background-color: $white;
+}
+
+:host ::ng-deep .myInputStyleClass {
+  background-color: $white !important;
+
+  .ui-autocomplete-list-item {
+    transition: all 0.3s;
+    padding-left: 30px;
+
+    &:hover {
+      color: $white;
+      background-color: $red;
+    }
+  }
+}
+

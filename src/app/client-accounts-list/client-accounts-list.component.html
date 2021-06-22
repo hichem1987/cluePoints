@@ -1,0 +1,42 @@
+<ng-container *ngIf="isReady">
+  <header>
+    <div id="logo">
+      <a href="https://cluepoints.com/" target="_blank" title="cluePoints web site"><img alt="CluePoints "
+           src="https://xn1yt3zsnj346j2392z5m3r2-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/clue_points_cmyk.png"
+           srcset="https://cluepoints.com/wp-content/uploads/2020/01/clue_points_cmyk.png 1x, https://cluepoints.com/wp-content/uploads/2020/01/clue_points_cmyk.png 2x">
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="text-center marge-bottom">
+            <span class="iconwrapper"><fa-icon class="myIcon" [icon]="faSearch"></fa-icon></span>
+            <p-autoComplete [suggestions]="output" (completeMethod)="search($event)"  styleClass="autocompleteClass"
+                             panelStyleClass="myInputStyleClass"
+                            (onSelect)="elementSelected($event)" type=search (onClear)="onClear()"
+                            placeholder="Client Name" [dropdown]="true"></p-autoComplete>
+          </div>
+            <div *ngFor="let client of allClient">
+              <app-client-informations [client]="client"></app-client-informations>
+            </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</ng-container>
+<ng-container *ngIf="!isReady">
+  <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ng-container>
+
+

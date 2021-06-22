@@ -1,0 +1,13 @@
+<p-dialog [(visible)]="visible" [showHeader]="true" [contentStyle]="contentStyle" [blockScroll]="true"
+          showEffect="fade" [responsive]="true" [modal]="backdrop" [width]="width" (onHide)="onClose()"  [style]="{'max-width':'90%'}"
+          [focusOnShow]="false" [minWidth]="minWidth"
+          [breakpoint]="1024" [baseZIndex]="0" [positionTop]="positionTop"
+          [styleClass]="'myModal'"
+          [positionLeft]="positionLeft" [closeOnEscape]="closeOnEscape" [height]="height" [appendTo]="appendTo">
+  <p-header>
+    <div class="d-flex justify-content-center w-100" *ngIf="modalName">
+      <div id="trapezoid" class="bg-primary px-3 py-1 text-white small">{{modalName}}</div>
+    </div>
+  </p-header>
+  <ng-content></ng-content>
+</p-dialog>

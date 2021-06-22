@@ -1,0 +1,131 @@
+<div class="container client-data-container">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="header-info">
+        <h2>Client Id <span class="id-container">{{client.id}}</span></h2>
+      </div>
+    </div>
+    <div class="col-2">
+      <div>
+        <h3>Informations</h3>
+        <div>
+          <h4>Date of Birth</h4>
+          <p>{{client.birthday == 'None' ? client.birthday : client.birthday | date: 'dd/MM/yyyy'}}</p>
+        </div>
+        <div>
+          <h4>First Name</h4>
+          <p>{{client.firstname}}</p>
+        </div>
+        <div>
+          <h4>Last Name</h4>
+          <p>{{client.name}}</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-3">
+      <div>
+        <div class="no-data-container">
+          <ng-container *ngIf="accountData.length>0">
+            <p-panel header="Client's Accounts balances Chart - Pie" class=ui-g-12 ui-md-12>
+              <p-chart class="centered-element" type="pie" [data]="chartData"
+                       (onDataSelect)="selectData($event.element._model.label)"
+                       [options]="chartOptions"></p-chart>
+            </p-panel>
+          </ng-container>
+          <ng-container *ngIf="accountData.length==0">
+            <p class="centered-element">No Data to Show</p>
+          </ng-container>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-6">
+      <div class="buttons-wrapper">
+        <button (click)="reset()" name="reset">Reset Filters</button>
+        <button (click)="openModal()" name="buttonMore">More</button>
+      </div>
+      <div>
+        <p-chart type="bar"
+                 #chart
+                 [data]="chartDataBar"
+                 [options]="barOptions">
+        </p-chart>
+      </div>
+      <div class="row mt-2" style="height: 10px">
+        <div class="col-sm-12 d-flex justify-content-center">
+          <div class="custom-control custom-radio float-left pr-sm-3">
+            <input type="radio" id="visa-{{client.id}}" name="accountType-{{client.id}}"
+                   class="custom-control-input" [checked]="false"
+                   [value]="'VISA'" (change)="filterBarsByAccountType($event.target.defaultValue)">
+            <label class="custom-control-label text-truncate" for="visa-{{client.id}}">
+              <strong>
+                Visa
+              </strong>
+            </label>
+          </div>
+          <div class="custom-control custom-radio float-left pr-sm-3">
+            <input type="radio" id="masterCard-{{client.id}}" name="accountType-{{client.id}}"
+                   class="custom-control-input" [checked]="false"
+                   [value]="'Master Card'" (change)="filterBarsByAccountType($event.target.defaultValue)">
+            <label class="custom-control-label text-truncate" for="masterCard-{{client.id}}">
+              <strong>
+                Master Card
+              </strong>
+            </label>
+          </div>
+          <div class="custom-control custom-radio float-left pr-sm-3">
+            <input type="radio" id="american-{{client.id}}" name="accountType-{{client.id}}"
+                   class="custom-control-input" [checked]="false"
+                   [value]="'American Express'"
+                   (change)="filterBarsByAccountType($event.target.defaultValue)">
+            <label class="custom-control-label text-truncate" for="american-{{client.id}}">
+              <strong>
+                Amercian Express
+              </strong>
+            </label>
+          </div>
+          <div class="custom-control custom-radio float-left pr-sm-3">
+            <input type="radio" id="proton-{{client.id}}" name="accountType-{{client.id}}"
+                   class="custom-control-input" [checked]="false"
+                   [value]="'Proton'" (change)="filterBarsByAccountType($event.target.defaultValue)">
+            <label class="custom-control-label text-truncate" for="proton-{{client.id}}">
+              <strong>
+                Proton
+              </strong>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-modal #modal [draggable]="true" [resizable]="true" [backdrop]="true" *ngIf="accountDetailModalOpen"
+           (onHide)="setClosedModal()">
+  <div class="header-content">
+    <div class="row screen-header d-flex justify-content-between">
+      <h4 class="modal-title">Client {{client.firstname}} {{client.name}} </h4>
+    </div>
+  </div>
+  <div class="content">
+    <p-table [columns]="cols" [value]="accountDataOriginal" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]"
+             totalRecords="totalRecords" pageLinks="3">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</app-modal>
