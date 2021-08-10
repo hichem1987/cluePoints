@@ -1,5 +1,6 @@
 # Hichem HAMDAOUI frontend Assestment for CluePoints
 This work is a delivery for CluePoints Frontend Assestment in June 2021 for the company CluePoints.
+Duration of the assestment was a week of work. I progressed on it during my free time as I had my own work related to my position at Codix to process.
 The assestment description is [here](https://github.com/hichem1987/cluePoints/blob/main/Frontend%20Engineer%20Assessment.pdf)  .
 A Link where the work is deployed is [here](https://hichem1987.github.io/cluePoints/)   
 The project is about consuming an API containing data about virtual clients and the payment cards they use.
