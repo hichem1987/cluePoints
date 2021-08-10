@@ -1,4 +1,9 @@
 # Hichem HAMDAOUI frontend Assestment for CluePoints
+This work is a delivery for CluePoints Frontend Assestment in June 2021 for the company CluePoints.
+The assestment description is [here](https://hichem1987.github.io/cluePoints/)  .
+A Link where the work is deployed is [here](https://hichem1987.github.io/cluePoints/)   
+The project is about consuming an API containing data about virtual clients and the payment cards they use.
+The objective is showing data in several graphs using multiple type of filters.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
